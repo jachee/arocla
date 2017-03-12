@@ -1,0 +1,35 @@
+{% extends "structure.html" %}
+
+
+{% block main %}
+{% for team in teams: %}
+
+<table width="575" title="{{ team[1]|title }} Admins" cellpadding="2" border="0" cellspacing="2" class="noborderTable">
+       <tr>
+           <th colspan="5"> <div align="center">{{ team[1]|title }} Admins</div>
+           </th>
+       </tr>
+        <tr>
+          <th width="60"><div align="left">Icon</div></th>
+          <th width="150"><div align="left">Name</div></th>
+          <th width="85"> <div align="center">Email</div></th>
+          <th width="85"><div align="center">Desktop</div></th>
+          <th width="85"><div align="center">Wireless</div></th>
+        </tr>
+
+
+    {% for admin in team[0]: %}
+
+    <tr{%if loop.first %} style="color: green; font-weight: bold;"{% endif %}>
+        {% if loop.first %}<td><img src="{{url_for('static', filename='yes.png')}}"> </td> {% else %}
+        <td><img src="{{url_for('static', filename='no.png')}}"></td> {% endif %}
+        <td>{{ admin.name }}</td>
+        <td align="center">{{ admin.email }}</td>
+        <td align="center">{{ admin.desktop }}</td>
+        <td align="center">{{ admin.wireless }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor%}
+
+{% endblock %}
