@@ -1,0 +1,6 @@
+[
+    {"name": "John 'Hannibal' Smith", "id": 1, "wireless": "555.555.3210", "desktop": "5555", "email": "hannibal@renegadeoutlaws.com" },
+    {"name": "Templeton 'Faceman' Peck", "id": 2, "wireless": "555.322.3626", "desktop": "3223", "email": "faceman@renegadeoutlaws.com" },
+    {"name": "Bosco Albert 'B. A.' Baracus", "id": 3, "wireless": "555.166.4295", "desktop": "4653", "email": "mohawk@renegadeoutlaws.com" },
+    {"name": "H. M. 'Howling Mad' Murdock", "id": 4, "wireless": "555.262.3626", "desktop": "3223", "email": "murdock@renegadeoutlaws.com" }
+]
