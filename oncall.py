@@ -54,18 +54,18 @@ def output_list(admins):
     other is a string.
     """
     team = admins[1]
-    print "%sadmins List:" % team.title()
-    print admins[0]
+    print("%sadmins List:" % team.title())
+    print(admins[0])
     return admins[0], team
 
 def whos_up(admins):
     team = admins[1]
-    print "%sadmins Current on-call :" % team.title()
-    print rotate_list(admins[0], cycle)[0]
+    print("%sadmins Current on-call :" % team.title())
+    print(rotate_list(admins[0], cycle)[0])
     return rotate_list(admins[0], cycle)[0], team
 
 def main():
-    print "mypath: %s" % mypath
+    print("mypath: %s" % mypath)
     for team in teams:
         admins=(load_list(team),team)
         whos_up(admins)
