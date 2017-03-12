@@ -4,24 +4,25 @@
 {% block main %}
 {% for team in teams: %}
 
-<table width="575" title="{{ team[1]|title }} Admins" cellpadding="2" border="0" cellspacing="2" class="noborderTable">
-       <tr>
-           <th colspan="5"> <div align="center">{{ team[1]|title }} Team</div>
+<table width="575" title="{{ team[1]|title }} Team" cellpadding="2" border="0" cellspacing="2" class="team">
+       <tr class="heading">
+           <th colspan="5">
+               <div align="center">{{ team[1]|title }} Team</div>
            </th>
        </tr>
         <tr>
           <th width="60"><div align="left"> </div></th>
           <th width="150"><div align="left">Name</div></th>
           <th width="85"> <div align="center">Email</div></th>
-          <th width="85"><div align="center">Desktop</div></th>
-          <th width="85"><div align="center">Wireless</div></th>
+          <th width="85"><div align="center">Desk Phone</div></th>
+          <th width="85"><div align="center">Mobile Phone</div></th>
         </tr>
 
 
     {% for admin in team[0]: %}
 
-    <tr{%if loop.first %} style="color: green; font-weight: bold; background: #ccffcc;"{% endif %}>
-        {% if loop.first %}<td><img src="{{url_for('static', filename='yes.png')}}" height="64" width="64"> </td> {% else %}
+    <tr{%if loop.first %} class="oncall"{% endif %}>
+        {% if loop.first %}<td align="right"><img src="{{url_for('static', filename='yes.png')}}" height="32" width="32"> </td> {% else %}
         <td><!--img src="{{url_for('static', filename='no.png')}}" --></td> {% endif %}
         <td>{{ admin.name }}</td>
         <td align="center">{{ admin.email }}</td>

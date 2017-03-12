@@ -9,22 +9,22 @@
     </head>
     <body>
         <div id="header">
-            <div id="container">
+            <div class="container">
                 <div id="logo">
                     <img src="{{ url_for('static', filename='logo.svg') }}" height="64" width="64">
                 </div>
                 <div width="100%" id="topmenu">
                     <ul>
-			<li>Settings</li>
-			<li>Add/Remove Teams</li>
-			<li>Add/Remove Members</li>
+            			<li>Settings</li>
+            			<li>Add/Remove Teams</li>
+            			<li>Add/Remove Members</li>
                     </ul>
                 </div>
             </div>
         </div>
-    <div id="container">
+    <div class="container">
         <div id="sidebar"><h3>Auto-rotated On-Call List</h3> <p>Current on-call member for each team is in green.</p> </div>
-        <div id="main" class="main">
+        <div id="main">
             {% block main %}{% endblock %}
         </div>
     </body>

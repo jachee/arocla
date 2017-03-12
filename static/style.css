@@ -1,1 +1,115 @@
 /* This is a placeholder, and will eventually be styled. */
+
+body {
+	background:#333;
+	color:black;
+	margin:0;
+	padding:20px 0;
+	font: 10pt/15pt Helvetica, Arial, Verdana, sans-serif;
+	-webkit-font-smoothing: antialiased;
+/*	font: 10pt/15pt "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	-webkit-font-smoothing: antialiased; */
+}
+
+
+
+#header {
+	background:white;
+	/*width:890px;*/
+	margin:0px auto;
+	padding:10px 20px;
+	/*padding-bottom: 40px;*/
+	margin-bottom: 20px;
+}
+
+.container {
+	background:white;
+	width:890px;
+	margin:0px auto;
+	padding:10px 100px;
+	padding-bottom: 60px;
+	margin-bottom: 20px;
+}
+
+#header .container {
+    padding:10px 20px;
+}
+
+#topmenu {
+	float: left;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#topmenu ul {
+    margin-bottom: 15px;
+    margin-top: -5px;
+}
+
+#topmenu li {
+	margin: 0 5px;
+	padding: 0 0 10px;
+	float: left;
+	position: relative;
+	list-style: none;
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#topmenu a {
+	font-weight: bold;
+	color: #0CF;
+	text-decoration: none;
+	display: block;
+	padding: 8px 20px;
+	margin-bottom: 25px;
+}
+#sidebar
+{
+position: relative;
+left:0px;
+float:left;
+width:150px;
+height: 1000px;
+margin:0;
+padding:1em;
+clear:left;
+text-align: left;
+font-family: Helvetica, sans-serif;
+font-size: 11px;
+}
+
+#main {
+
+    width: 750px;
+    background-color: white;
+
+}
+
+
+#logo {
+margin-top: -20px;
+margin-left: -15px;
+float: left;
+border: 0;
+outline: none;
+}
+
+.heading {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+table {
+margin-bottom: 30px;
+padding-bottom: 30px;
+border-width: thin;
+border-color: #333;
+border-style: solid;
+}
+
+.oncall {
+    color: green;
+    font-weight: bold;
+    background: #ccffcc;
+}
