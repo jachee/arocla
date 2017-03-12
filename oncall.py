@@ -72,7 +72,7 @@ def main():
         output_list(admins)
 
 
-    print "Done!"
+    print("Done!")
 
 
 if __name__ == '__main__':
