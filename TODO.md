@@ -2,6 +2,8 @@
 
 * Determine configurable items
 * Un-hard-code teams
-    * Find `*.json` files in pwd
+    * ~~Write real example JSON files~~
+    * ~~Find `*.json` files in pwd~~
 * Write decent CSS
 * REST API
+* Flesh out README

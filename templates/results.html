@@ -10,7 +10,7 @@
            </th>
        </tr>
         <tr>
-          <th width="60"><div align="left">Icon</div></th>
+          <th width="60"><div align="left"> </div></th>
           <th width="150"><div align="left">Name</div></th>
           <th width="85"> <div align="center">Email</div></th>
           <th width="85"><div align="center">Desktop</div></th>
@@ -20,9 +20,9 @@
 
     {% for admin in team[0]: %}
 
-    <tr{%if loop.first %} style="color: green; font-weight: bold;"{% endif %}>
-        {% if loop.first %}<td><img src="{{url_for('static', filename='yes.png')}}"> </td> {% else %}
-        <td><img src="{{url_for('static', filename='no.png')}}"></td> {% endif %}
+    <tr{%if loop.first %} style="color: green; font-weight: bold; background: #ccffcc;"{% endif %}>
+        {% if loop.first %}<td><img src="{{url_for('static', filename='yes.png')}}" height="64" width="64"> </td> {% else %}
+        <td><!--img src="{{url_for('static', filename='no.png')}}" --></td> {% endif %}
         <td>{{ admin.name }}</td>
         <td align="center">{{ admin.email }}</td>
         <td align="center">{{ admin.desktop }}</td>

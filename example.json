@@ -1,0 +1,4 @@
+[
+    {"name": "Joe Schmoe", "id": 1, "wireless": "555.444.3210", "desktop": "4123", "email": "jschmoe@company.com" },
+    {"name": "Bill Melater", "id": 2, "wireless": "555.444.5678", "desktop": "4567", "email": "bmelater@company.com" }
+]
