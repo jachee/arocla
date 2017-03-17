@@ -8,19 +8,30 @@ import sys, os, datetime, fnmatch
 import simplejson as json
 
 mypath = os.path.abspath(os.path.dirname(__file__))
-
+teamfile = os.path.join(mypath, 'teams.json')
 
 today = datetime.datetime.now() # Got the current time
 # today = datetime.datetime(2017, 9, 9, 15, 0, 20, 912320) # Fuuuuuture!
 
 week = int(today.strftime('%U')) # Converted to a numeric week number
-weeks_per_cycle = 2  # Edit this to control how long each person is on-call.
-cycle = int(week / weeks_per_cycle) # What cycle number are we on?
 
-teams = []
-for file in os.listdir(mypath):
-     if fnmatch.fnmatch(file, '*.json'):
-         teams.append(file.split('.')[0])
+
+def load_teams():
+    try:
+        source = open(teamfile)
+    except IOError:
+        sys.exit("No %s file found! Exiting." % teamfile)
+    except:
+        sys.exit("Error opening %s for reading. Exiting." % teamfile)
+
+    try:
+        teams = json.load(source)
+    except:
+        sys.exit("Error while reading team info from %s" % teamfile)
+
+
+
+    return teams
 
 
 def rotate_list(target_list, offset):
@@ -34,44 +45,51 @@ def rotate_list(target_list, offset):
 
 def load_list(team):
     """
-    Takes a team as a string, and loads the JSON file for that team.
+    Takes a team as a dict that's a team Description and a  JSON file
+    for that team. Returns the contents of the JSON file as a list of dicts
     """
     try:
-        source = open(os.path.join(mypath, '%s.json' % team))
+        source = open(os.path.join(mypath, '%s' % team['filename']))
     except IOError:
-        sys.exit("No %s.json file found! Exiting." % team)
+        sys.exit("No %s.json file found! Exiting." % team['filename'])
     except:
-        sys.exit("Error opening %s.json for reading. Exiting." % team)
+        sys.exit("Error opening %s.json for reading. Exiting." % team['filename'])
 
     try:
-        typelist = json.load(source)
+        teaminfo = json.load(source)
     except:
-        sys.exit("Error loading %s.json. Does it exist?" % team)
+        sys.exit("Error loading %s. Does it exist?" % team['filename'])
 
-    return typelist
+    return teaminfo
 
-def output_list(admins):
+def output_list(team_list, team):
     """
-    Takes a list of tuples, one of which is a list of dictionaries and the
-    other is a string.
+    Takes a list of dictionaries and the other is a string.
     """
-    team = admins[1]
-    print("%s Team List:" % team.title())
-    print(admins[0])
-    return admins[0], team
+    desc = team['teamname']
+    print("%s Team List:" % desc.title())
+    print(team_list)
 
-def whos_up(admins):
-    team = admins[1]
-    print("%s Team Current on-call :" % team.title())
-    print(rotate_list(admins[0], cycle)[0])
-    return rotate_list(admins[0], cycle)[0], team
+
+def whos_up(team_list, team, weeks_per_cycle=2):
+    """
+    Takes a list of dictionaries and an optional integer, returns a rotated
+    list of dictionaries.
+    """
+    cycle = int(week / weeks_per_cycle) # What cycle number are we on?
+
+    desc = team['teamname']
+    print("%s Current on-call :" % desc.title())
+    print(rotate_list(team_list, cycle)[0])
+    return rotate_list(team_list, cycle)[0]
 
 def main():
     print("mypath: %s" % mypath)
+    teams = load_teams()
     for team in teams:
-        admins=(load_list(team),team)
-        whos_up(admins)
-        output_list(admins)
+        teaminfo=(load_list(team))
+        whos_up(teaminfo, team)
+        output_list(teaminfo, team)
 
 
     print("Done!")

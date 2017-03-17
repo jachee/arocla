@@ -3,7 +3,7 @@
 webapp.py - flaskify the oncall app.
 """
 
-from oncall import whos_up, rotate_list, load_list
+from oncall import load_teams, whos_up, rotate_list, load_list
 from flask import *
 import datetime, fnmatch, os
 
@@ -11,10 +11,7 @@ app = Flask(__name__)
 mypath = os.path.abspath(os.path.dirname(__file__))
 
 
-teams = []
-for file in os.listdir(mypath):
-     if fnmatch.fnmatch(file, '*.json'):
-         teams.append(file.split('.')[0])
+teams = load_teams()
 
 # teams = ["system", "network", "mobility"] # Each of these should have a <type>admins.json file
 today = datetime.datetime.now() # Got the current time
@@ -34,7 +31,7 @@ if week % weeks_per_cycle == 0:         # Zero modulus is a fresh cycle
 def list_loop():
     big_list = []
     for team in teams:
-        admins = (load_list(team), team)
+        team_list = load_list(team)
         big_list.append((rotate_list(admins[0], cycle), team))
     # print "Full Admins List
     # print big_list

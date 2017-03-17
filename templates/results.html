@@ -19,15 +19,15 @@
         </tr>
 
 
-    {% for admin in team[0]: %}
+    {% for member in team[0]: %}
 
     <tr{%if loop.first %} class="oncall"{% endif %}>
         {% if loop.first %}<td align="right"><img src="{{url_for('static', filename='yes.png')}}" height="32" width="32"> </td> {% else %}
         <td><!--img src="{{url_for('static', filename='no.png')}}" --></td> {% endif %}
-        <td>{{ admin.name }}</td>
-        <td align="center">{{ admin.email }}</td>
-        <td align="center">{{ admin.desktop }}</td>
-        <td align="center">{{ admin.wireless }}</td>
+        <td>{{ member.name }}</td>
+        <td align="center">{{ member.email }}</td>
+        <td align="center">{{ member.desktop }}</td>
+        <td align="center">{{ member.wireless }}</td>
     </tr>
     {% endfor %}
 </table>
