@@ -71,17 +71,18 @@ def output_list(team_list, team):
     print(team_list)
 
 
-def whos_up(team_list, team, weeks_per_cycle=2):
+def whos_up(team, members, weeks_per_cycle=2):
     """
     Takes a list of dictionaries and an optional integer, returns a rotated
     list of dictionaries.
     """
+    print(team)
     cycle = int(week / weeks_per_cycle) # What cycle number are we on?
 
     desc = team['teamname']
     print("%s Current on-call :" % desc.title())
-    print(rotate_list(team_list, cycle)[0])
-    return rotate_list(team_list, cycle)[0]
+    print(rotate_list(members, cycle)[0])
+    return rotate_list(members, cycle)
 
 def main():
     print("mypath: %s" % mypath)
