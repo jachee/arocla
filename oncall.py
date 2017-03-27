@@ -1,7 +1,11 @@
 #! /usr/bin/env python
 
 """
-On Call Rotator - Less-Goldbergian Edition.
+Autmated On Call Rotation List App
+
+Mostly a library of funcitons to be called by the Flask app.
+
+Will also spit output to the commandline if run that way.
 """
 
 import sys, os, datetime, fnmatch
