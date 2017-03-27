@@ -1,6 +1,7 @@
 #! /usr/local/env python
 """
-webapp.py - flaskify the oncall app.
+This does the actual web-serving for the Automated On-Call List
+            Rotation app.
 """
 
 from oncall import load_teams, whos_up, rotate_list, load_list
