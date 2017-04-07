@@ -12,8 +12,6 @@ app = Flask(__name__)
 mypath = os.path.abspath(os.path.dirname(__file__))
 
 
-teams = load_teams()
-
 # teams = ["system", "network", "mobility"] # Each of these should have a <type>admins.json file
 # today = datetime.datetime.now() # Got the current time
 #today = datetime.datetime(2017, 2, 6, 9, 0, 20, 912320) # Fuuuuuture!
@@ -30,20 +28,18 @@ teams = load_teams()
 
 
 def list_loop():
-    big_list = []
+    teamslist = []
+    teams = load_teams()
     for team in teams:
-        members = load_list(team)
-        big_list.append(rotate_list(members))
-    # print "Full Admins List
-    # print big_list
-    print(big_list)
-    return big_list
+        teaminfo = (load_list(team))
+        teamslist.append(whos_up(teaminfo))
+    return teamslist
 
 
 @app.route("/")
 def index():
-    teams = list_loop()
-    return render_template('results.html', teams = teams)
+    rotatedteams = list_loop()
+    return render_template('results.html', teams = rotatedteams)
 
 
 def main():

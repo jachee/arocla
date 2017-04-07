@@ -7,7 +7,7 @@
 <table width="100%" title="{{ team[1]|title }} Team" cellpadding="2" border="0" cellspacing="2" class="team">
        <tr class="heading">
            <th colspan="5">
-               <div align="center">{{ team[1]|title }} Team</div>
+               <div align="center">{{ team[0]|title }}</div>
            </th>
        </tr>
         <tr>
@@ -19,7 +19,7 @@
         </tr>
 
 
-    {% for member in team[0]: %}
+    {% for member in team[1]: %}
 
     <tr{%if loop.first %} class="oncall"{% endif %}>
         {% if loop.first %}<td align="right"><img src="{{url_for('static', filename='yes.png')}}" height="32" width="32"> </td> {% else %}

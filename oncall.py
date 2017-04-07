@@ -33,8 +33,6 @@ def load_teams():
     except:
         sys.exit("Error while reading team info from %s" % teamfile)
 
-
-
     return teams
 
 
@@ -50,7 +48,8 @@ def rotate_list(target_list, offset):
 def load_list(team):
     """
     Takes a team as a dict that's a team Description and a  JSON file
-    for that team. Returns the contents of the JSON file as a list of dicts
+    for that team. Returns a tuple of the team name and the contents of the
+    JSON file as a list of dicts
     """
     try:
         source = open(os.path.join(mypath, '%s' % team['filename']))
@@ -60,41 +59,45 @@ def load_list(team):
         sys.exit("Error opening %s.json for reading. Exiting." % team['filename'])
 
     try:
-        teaminfo = json.load(source)
+        members = json.load(source)
     except:
         sys.exit("Error loading %s. Does it exist?" % team['filename'])
 
-    return teaminfo
+    return (team['teamname'], members)
 
-def output_list(team_list, team):
+def output_list(teamlist, team):
     """
     Takes a list of dictionaries and the other is a string.
     """
     desc = team['teamname']
     print("%s Team List:" % desc.title())
-    print(team_list)
+    print(teamlist)
 
 
-def whos_up(team, members, weeks_per_cycle=2):
+def whos_up(teamlist, weeks_per_cycle=2):
     """
-    Takes a list of dictionaries and an optional integer, returns a rotated
-    list of dictionaries.
+    Takes a tuple as from load_list() and an optional integer, returns a
+    tuple of the team name and rotated list of dictionaries.
     """
-    print(team)
+    # print(teaminfo)
     cycle = int(week / weeks_per_cycle) # What cycle number are we on?
 
-    desc = team['teamname']
-    print("%s Current on-call :" % desc.title())
-    print(rotate_list(members, cycle)[0])
-    return rotate_list(members, cycle)
+
+    desc = teamlist[0]
+    members = teamlist[1]
+    if __name__ == '__main__':
+        print("%s Current on-call :" % desc.title())
+        print(rotate_list(members, cycle)[0])
+
+    return (desc, rotate_list(members, cycle))
 
 def main():
     print("mypath: %s" % mypath)
     teams = load_teams()
     for team in teams:
-        teaminfo=(load_list(team))
-        whos_up(teaminfo, team)
-        output_list(teaminfo, team)
+        teamlist = (load_list(team))
+        whos_up(teamlist)
+        output_list(teamlist, team)
 
 
     print("Done!")

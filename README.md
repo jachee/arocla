@@ -1,8 +1,9 @@
 #Auto-rotating On-call List Application
 
-### Current Working status: BROKEN
+### Current Working status: Working!
 
-A Flask app that reads a JSON file with team-member info, and spits out an on-call list based on the week of the year.
+A Flask app that reads a JSON file with team info, and spits out an on-call list for each team
+based on the team's roster JSON file and the week of the year.
 
 
 The `logo.svg` and `yes.png`  are both public domain works. Feel free to replace those.
