@@ -6,7 +6,7 @@ This does the actual web-serving for the Automated On-Call List
 
 import oncall
 from flask import *
-import datetime, fnmatch, os
+# import datetime, fnmatch, os
 
 app = Flask(__name__)
 # mypath = os.path.abspath(os.path.dirname(__file__))
