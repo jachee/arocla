@@ -4,13 +4,12 @@ This does the actual web-serving for the Automated On-Call List
             Rotation app.
 """
 
-from oncall import load_teams, whos_up, rotate_list, load_list
+import oncall
 from flask import *
 import datetime, fnmatch, os
 
 app = Flask(__name__)
-mypath = os.path.abspath(os.path.dirname(__file__))
-
+# mypath = os.path.abspath(os.path.dirname(__file__))
 
 # teams = ["system", "network", "mobility"] # Each of these should have a <type>admins.json file
 # today = datetime.datetime.now() # Got the current time
@@ -29,10 +28,10 @@ mypath = os.path.abspath(os.path.dirname(__file__))
 
 def list_loop():
     teamslist = []
-    teams = load_teams()
+    teams = oncall.load_teams()
     for team in teams:
-        teaminfo = (load_list(team))
-        teamslist.append(whos_up(teaminfo))
+        teaminfo = (oncall.load_list(team))
+        teamslist.append(oncall.whos_up(teaminfo))
     return teamslist
 
 
