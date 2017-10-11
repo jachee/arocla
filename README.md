@@ -7,7 +7,7 @@ based on the team's roster JSON file and the week of the year.
 
 ### Screenshot
 
-![(./screenshot.png)]
+![screenshot](./screenshot.png)
 
 
 The `logo.svg` and `yes.png`  are both public domain works. Feel free to replace those.
