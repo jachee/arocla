@@ -4,10 +4,10 @@
 {% block main %}
 {% for team in teams: %}
 
-<table width="100%" title="{{ team[1]|title }} Team" cellpadding="2" border="0" cellspacing="2" class="team">
+<table width="100%" title="{{ team[0] }} Team" cellpadding="2" border="0" cellspacing="2" class="team">
        <tr class="heading">
            <th colspan="5">
-               <div align="center">{{ team[0]|title }}</div>
+               <div align="center">{{ team[0] }}</div>
            </th>
        </tr>
         <tr>

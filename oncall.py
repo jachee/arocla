@@ -70,11 +70,11 @@ def output_list(teamlist, team):
     Takes a list of dictionaries and the other is a string.
     """
     desc = team['teamname']
-    print("%s Team List:" % desc.title())
+    print("%s Team List:" % desc)
     print(teamlist)
 
 
-def whos_up(teamlist, weeks_per_cycle=2):
+def whos_up(teamlist, weeks_per_cycle=1):
     """
     Takes a tuple as from load_list() and an optional integer, returns a
     tuple of the team name and rotated list of dictionaries.
@@ -86,7 +86,7 @@ def whos_up(teamlist, weeks_per_cycle=2):
     desc = teamlist[0]
     members = teamlist[1]
     if __name__ == '__main__':
-        print("%s Current on-call :" % desc.title())
+        print("%s Current on-call :" % desc)
         print(rotate_list(members, cycle)[0])
 
     return (desc, rotate_list(members, cycle))
