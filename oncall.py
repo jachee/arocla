@@ -17,8 +17,9 @@ teamfile = os.path.join(mypath, 'teams.json')
 today = datetime.datetime.now() # Got the current time
 # today = datetime.datetime(2017, 9, 9, 15, 0, 20, 912320) # Fuuuuuture!
 
-week = int(today.strftime('%U')) # Converted to a numeric week number
-
+this_week = int(today.strftime('%U')) # Converted to a numeric week number
+this_month = int(today.strftime('%-m'))
+this_day = int(today.strftime('%-j'))
 
 def load_teams():
     try:
@@ -74,14 +75,18 @@ def output_list(teamlist, team):
     print(teamlist)
 
 
-def whos_up(teamlist, weeks_per_cycle=1):
+def whos_up(teamlist, interval='week', freq=1):
     """
-    Takes a tuple as from load_list() and an optional integer, returns a
-    tuple of the team name and rotated list of dictionaries.
+    Takes a tuple as from load_list() and an optional string and integer,
+    returns a tuple of the team name and rotated list of dictionaries.
     """
     # print(teaminfo)
-    cycle = int(week / weeks_per_cycle) # What cycle number are we on?
-
+    if interval == "month":
+        cycle = int(this_month / freq)
+    elif interval == "day":
+        cycle = int(this_day / freq)
+    else:
+        cycle = int(this_week / freq) # What cycle number are we on?
 
     desc = teamlist[0]
     members = teamlist[1]
@@ -96,7 +101,9 @@ def main():
     teams = load_teams()
     for team in teams:
         teamlist = (load_list(team))
-        whos_up(teamlist)
+        interval = team['interval']
+        freq = team['freq']
+        whos_up(teamlist, interval, freq)
         output_list(teamlist, team)
 
 
