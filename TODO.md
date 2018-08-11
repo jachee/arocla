@@ -15,8 +15,8 @@
         * ~~Fix @app calls to deal with team structures.~~
     * ~~Update results.html to deal with team structures.~~
     * Team properties:
-        * Cycle type: monthly, weekly, daily
-        * Cycle freq: every X Months/weeks/days
+        * ~~Cycle type: monthly, weekly, daily~~
+        * ~~Cycle freq: every X Months/weeks/days~~
 * Update `whos_up` for variable-length rotations.
 
 * CRUD
