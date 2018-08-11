@@ -1,4 +1,4 @@
 [
-    {"teamname" : "The A Team", "filename" : "the A.json"},
-    {"teamname" : "Example Consortium", "filename" : "example.json"}
+    {"teamname" : "The A Team", "filename" : "the A.json", "interval" : "week", "freq" : 1},
+    {"teamname" : "Example Consortium", "filename" : "example.json", "interval" : "day", "freq" : 2}
 ]
