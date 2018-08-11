@@ -101,7 +101,9 @@ def main():
     teams = load_teams()
     for team in teams:
         teamlist = (load_list(team))
-        whos_up(teamlist)
+        interval = team['interval']
+        freq = team['freq']
+        whos_up(teamlist, interval, freq)
         output_list(teamlist, team)
 
 
