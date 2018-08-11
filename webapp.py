@@ -30,8 +30,10 @@ def list_loop():
     teamslist = []
     teams = oncall.load_teams()
     for team in teams:
+        interval = team['interval']
+        freq = team['freq']
         teaminfo = (oncall.load_list(team))
-        teamslist.append(oncall.whos_up(teaminfo))
+        teamslist.append(oncall.whos_up(teaminfo, interval, freq))
     return teamslist
 
 
