@@ -95,6 +95,10 @@ outline: none;
     font-weight: bold;
 }
 
+a {
+	color: green;
+}
+
 table {
 margin-bottom: 30px;
 padding-bottom: 30px;
@@ -107,4 +111,9 @@ border-style: solid;
     color: green;
     font-weight: bold;
     background: #ccffcc;
+}
+
+a.oncall {
+    color: green;
+    font-weight: bold;
 }
