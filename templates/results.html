@@ -25,9 +25,9 @@
         {% if loop.first %}<td align="right"><img src="{{url_for('static', filename='yes.png')}}" height="32" width="32"> </td> {% else %}
         <td><!--img src="{{url_for('static', filename='no.png')}}" --></td> {% endif %}
         <td>{{ member.name }}</td>
-        <td align="center">{{ member.email }}</td>
-        <td align="center">{{ member.desktop }}</td>
-        <td align="center">{{ member.wireless }}</td>
+        <td align="center"><a href="mailto:{{ member.email }}">{{ member.email }}</a></td>
+        <td align="center"><a href="tel:{{ member.desktop|replace("\D", "")|replace(".", "") }}">{{ member.desktop }}</a></td>
+        <td align="center"><a href="tel:{{ member.wireless|replace("\D", "")|replace(".", "")}}">{{ member.wireless }}</a></td>
     </tr>
     {% endfor %}
 </table>
