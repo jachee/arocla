@@ -14,12 +14,14 @@ import simplejson as json
 mypath = os.path.abspath(os.path.dirname(__file__))
 teamfile = os.path.join(mypath, 'teams.json')
 
-today = datetime.datetime.now() # Got the current time
-# today = datetime.datetime(2017, 9, 9, 15, 0, 20, 912320) # Fuuuuuture!
-
-this_week = int(today.strftime('%U')) # Converted to a numeric week number
-this_month = int(today.strftime('%-m'))
-this_day = int(today.strftime('%-j'))
+def get_times():
+    today = datetime.datetime.now() # Got the current time
+    # today = datetime.datetime(2017, 9, 9, 15, 0, 20, 912320) # Fuuuuuture!
+    
+    this_week = int(today.strftime('%U')) # Converted to a numeric week number
+    this_month = int(today.strftime('%-m'))
+    this_day = int(today.strftime('%-j'))
+    return (today, this_week, this_month, this_day)
 
 def load_teams():
     try:
@@ -80,6 +82,7 @@ def whos_up(teamlist, interval='week', freq=1):
     Takes a tuple as from load_list() and an optional string and integer,
     returns a tuple of the team name and rotated list of dictionaries.
     """
+    (today, this_week, this_month, this_day) = get_times()
     # print(teaminfo)
     if interval == "month":
         cycle = int(this_month / freq)
