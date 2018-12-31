@@ -6,6 +6,8 @@ This does the actual web-serving for the Automated On-Call List
 
 import oncall
 from flask import *
+from pathlib import Path
+
 # import datetime, fnmatch, os
 
 app = Flask(__name__)
@@ -39,8 +41,12 @@ def list_loop():
 
 @app.route("/")
 def index():
-    rotatedteams = list_loop()
-    return render_template('results.html', teams = rotatedteams)
+    teamsfile = Path("./teams.json")
+    if teamsfile.is_file():
+        rotatedteams = list_loop()
+        return render_template('results.html', teams = rotatedteams)
+    else:
+        return render_template('error.html', error = "No teams.json found.")
 
 
 def main():
