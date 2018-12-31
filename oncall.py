@@ -17,10 +17,10 @@ teamfile = os.path.join(mypath, 'teams.json')
 def get_times():
     today = datetime.datetime.now() # Got the current time
     # today = datetime.datetime(2017, 9, 9, 15, 0, 20, 912320) # Fuuuuuture!
-    
+
     this_week = int(today.strftime('%U')) # Converted to a numeric week number
-    this_month = int(today.strftime('%-m'))
-    this_day = int(today.strftime('%-j'))
+    this_month = int(today.strftime('%m'))
+    this_day = int(today.strftime('%j'))
     return (today, this_week, this_month, this_day)
 
 def load_teams():
