@@ -9,4 +9,4 @@ python-dateutil==2.7.5
 pytz==2018.7
 simplejson==3.16.0
 six==1.12.0
-Werkzeug==0.15.3
+Werkzeug==0.15.5
